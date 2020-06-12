@@ -72,3 +72,86 @@ const re = arr.sort(compare);
 console.log(re) //[8, 5, 4, 3, 1]
 console.log(arr);//[8, 5, 4, 3, 1]
 ```
+##### 操作方法
+- concat() 创建副本，直接在最后追加,不会改变原数组
+```
+const colors = ["red", "green", "blue"]; 
+const result = colors.concat() // 没有参数相当于创建了一个副本，相当于浅拷贝
+console(result) //["red", "green", "blue"]
+console(colors) //["red", "green", "blue"]
+
+const a = [{name: 123},{age: 22}] 
+const re = a.concat()  //相当于浅拷贝
+a[0]["eat"]='吃饭'
+console(re) //[{name: 123, eat: '吃饭'},{age: 22}]
+console(a) //[{name: 123, eat: '吃饭'},{age: 22}]
+
+const colors = ["red", "green", "blue"]; 
+const colors2 = colors.concat("yellow", ["black", "brown"]); 
+console(colors); //red,green,blue 不会改变原数组
+console(colors2); //red,green,blue,yellow,black,brown
+```
+- slice() 截取数组，不会改变原数组
+ - 一个参数情况下，从此索引开始，一直截取到最后一项
+ ```
+ const arr = [{name: 'xiao'},{age: 14},{eat:'吃饭'},{run:'跑步'}];
+ const re = arr.slice(1);
+ console.log(re); //[{age: 14},{eat:'吃饭'},{run:'跑步'}]
+ console.log(arr); // [{name: 'xiao'},{age: 14},{eat:'吃饭'},{run:'跑步'}]
+
+ ```
+ - 两个参数的情况下，从第一个索引开始截取到第二个索引，不包括第二个索引的值
+ ```
+ const arr1 = [1,3,4,5,6];
+ arr.slice(1,4) // [3, 4, 5] 取前不取后
+ ```
+ - splice() 主要作用向数组中插入项 改变原数组，返回的是删除的项数，没有删除则返回空数组
+  - 删除，第一个参数是索引，从哪一项开始删除，第二个参数是删除项数(不传的话，只删除一项)
+  ```
+  const arr = ['a','b','c','d','e'];
+  const re = arr.splice(2,3);
+  console.log(arr); // ["a", "b"]
+  console.log(re); // ["c", "d", "e"]
+  ```
+  - 插入，可以向指定位置插入任意数量的项，提供三个参数（起始位置、0（要删除的项数）
+和要插入的项） 如果要插入多个项，可以再传入第四、第五，以至任意多个项
+```
+const colors = ["red", "green", "blue"];
+const  removed = colors.splice(1, 0, "yellow", "orange"); // 从位置 1 开始插入两项
+console.log(colors); // ["red", "yellow", "orange", "green", "blue"]
+console.log(removed); // 返回的是一个空数组  如果没有删除任何
+项，则返回一个空数组
+```
+ - 替换：可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定 3 个参数：起
+始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等。
+```
+const colors = ["red", "green", "blue"];
+const removed = colors.splice(1, 1, "red", "purple");
+console.log(colors); // ["red", "red", "purple", "blue"]
+console.log(removed); // ["green"]，返回的数组中只包含一项
+```
+- 位置方法 接收两个参数，第一个参数要查找的项，第二个参数是查找起点位置的索引，返回是所在的索引，若不存在则返回-1，用的是全等
+  - indexOf()  
+    ```
+    const arr = [1,2,3,4,5,3,4];
+    const re = arr.indexOf(3);
+    console.log(arr); // [1, 2, 3, 4, 5, 3, 4]
+    console.log(re);// 2 只会返回第一个查找到的索引
+
+    const arr =[{name:'xiao', age: 13, run:'跑步', eat:'吃饭'}];
+    const re = arr.indexOf({age:13})
+    console.log(re);
+
+    const moreArr = [{age:13}]
+    const res = moreArr.indexOf({age:13})
+    console.log(res) // -1
+
+
+    const person = { name: "Nicholas" }; 
+    const people = [{ name: "Nicholas" }]; 
+    const morePeople = [person]; 
+    console.log(people.indexOf(person)); //-1
+    console.log(morePeople.indexOf(person)); //0 todo
+    ```
+  - lastIndexOf()
+- 迭代方法
