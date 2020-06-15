@@ -188,3 +188,18 @@ console.log(removed); // ["green"]，返回的数组中只包含一项
   ```
   - forEach()，无返回值
   
+- 归并方法  接收4个参数：前一个值、当前值、项的索引和数组对象。这个函数返回任何值都会作为第一个参数自动传给下一项，第一次迭代发生在数组的第二项上，因此第一个参数是数组的第一项，第二个参数是数组的第二项
+ - reduce 
+```
+const values = [1,2,4,3,2,1];
+const sum = values.reduce(function (prev, cur, index, array) {
+    return prev+cur
+})
+console.log(sum); // 15
+```
+
+  - reduceRight 从右往前迭代
+
+
+  
+ 
