@@ -155,3 +155,36 @@ console.log(removed); // ["green"]，返回的数组中只包含一项
     ```
   - lastIndexOf()
 - 迭代方法
+  - every() 对数组中的每一项运行给定函数，如果该函数对每一项都返回 true，则返回 true。
+  ```
+  const arr = [3,4,5,6,7,8]; 
+  const re = arr.every((item) => {return item>1});
+  console.log(arr); // 不会改变原数组
+  console.log(re); // true  [0,4,5,6,7,8]---false
+  ```
+  - filter()：对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组。
+  ```
+  const numbers = [1,2,3,4,5,4,3,2,1]; 
+  const filterResult = numbers.filter(function(item, index, array){ 
+  return (item > 2); 
+  }); 
+  console.log(filterResult); //[3,4,5,4,3]
+  ```
+  - map()：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
+  ```
+  const numbers = [1,2,3,4,5,4,3,2,1]; 
+  const mapResult = numbers.map(function(item, index, array){ 
+    return item * 2; 
+  }); 
+  console.log(mapResult); //[2,4,6,8,10,8,6,4,2]
+  ```
+  - some()：对数组中的每一项运行给定函数，如果该函数对任一项返回 true，则返回 true。
+  ```
+  const numbers = [1,2,3,4,5,4,3,2,1];
+  const someResult = numbers.some(function(item, index, array){ 
+    return (item > 2); 
+  }); 
+  console.log(someResult); //true
+  ```
+  - forEach()，无返回值
+  
