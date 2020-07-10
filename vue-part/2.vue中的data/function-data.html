@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='../vue/dist/vue.js'></script>
+</head>
+<body>
+    <div id="demo">
+        <h1>vue组件中data必须是个函数？</h1>
+        <comp></comp>
+        <comp></comp>
+        <p>{{counter}}</p>
+    </div>
+    <script>
+        Vue.component('comp',{
+            template:'<div @click="counter++">{{counter}}</div>',
+            data() {
+                return {
+                    counter:0
+                }
+            }
+        })
+        // 创建实例
+        const demo = new Vue({
+            el: '#demo',
+            data: {
+                counter:1
+            }
+        })
+        console.log(demo);
+    </script>
+</body>
+</html>
