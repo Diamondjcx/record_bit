@@ -33,17 +33,45 @@ checkAge({
 
 
 
-const value = {number: 10};
+const value = {
+  number: 10
+};
 const year = 1997;
-const multiply = (x={...value},) => {
-  console.log(x===value) // false
-  console.log(x.number *=2)
+const multiply = (x = {
+  ...value
+}, ) => {
+  console.log(x === value) // false
+  console.log(x.number *= 2)
 }
 multiply(); // 20  默认参数在调用时才会进行计算，都会创建一个新的对象
 multiply(); // 20
 console.log(value); // {number: 20}
-multiply(value);// 40
-multiply(value)// 40
+multiply(value); // 40
+multiply(value) // 40
 
 console.log(value); // {number: 40}
 console.log(year) // 若是普通值传递，会创建一个新的变量，不会改变值
+
+
+
+const person = {
+  name: 'Lydia',
+  age: 12
+}
+
+const changeAge = (x = {
+  ...person
+}) => x.age += 1
+
+const changeAgeAndName = (x = {
+  ...person
+}) => {
+  x.age += 1;
+  x.name = 'Sarah'
+}
+
+changeAge(person)
+changeAgeAndName()
+
+console.log(person);
+// {name: 'Lydia', age: 13}
