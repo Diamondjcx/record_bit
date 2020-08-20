@@ -21,3 +21,13 @@ for (item in person) {
   // item name
   // item age
 }
+
+const info = {
+  [Symbol('a')]: b
+}
+console.log(info); // {Symbol('a'):b} 
+console.log(Object.keys(info)); //[]
+// Symbol类型是不可枚举的
+// Object.keys方法返回对象上所有可枚举的键属性
+// 特性： 表示完全唯一的值（防止变量名冲突）
+// 隐藏这种方法对象的属性（不完全，仍然可以使用Object.getOwnPropertySymbols()方法访问Symbol）
