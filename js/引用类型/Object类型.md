@@ -108,3 +108,73 @@ myObject.hasOwnProperty("b") // false
 ```
   - in操作符会检查属性是否在对象及其[[Prototype]]原型链中
   - hasOwnProperty()只会检查属性是否在myObject对象中，不会检查原型链
+- 存在性
+  - 是否可枚举
+    ```
+    var myObject = {};
+    Object.defineProperty(
+      myObject,
+      "a",
+      // a像普通对象一样可枚举
+      {enumerable: true, value: 2}
+    )
+    Object.defineProperty(
+      myObject,
+      "b",
+      // b 不可枚举
+      {enumerable: false, value: 2}
+    )
+
+    myObject.b; // 3
+    ("b" in myObject) // true
+    myObject.hasOwnProperty("b") // true
+
+    for(var k in myObject) {
+      console.log(k, myObject[k]);
+    }
+    // "a" 2
+    myObject.b确实存在并且有访问值，但是却不会出现在for...in 循环中。
+    原因： 可枚举 就相当于可以出现在对象属性的遍历中
+    ```
+
+    ```
+    var myObject = {};
+    Object.defineProperty(
+      myObject,
+      "a",
+      // a像普通对象一样可枚举
+      {enumerable: true, value: 2}
+    )
+    Object.defineProperty(
+      myObject,
+      "b",
+      // b 不可枚举
+      {enumerable: false, value: 2}
+    )
+    myObject.propertyIsEnumerable("a") // true    只判断本身不包含原型
+    myObject.propertyIsEnumerable("b") //false
+    Object.keys(myObject)  //['a']    只返回可枚举的
+    Object.getOwnPropertyNames(myObject) // ["a","b"] 属性都返回  无论是否可枚举
+    ```
+      - in 和 hasOwnProperty 区别在于是否查找原型链
+      - keys 和Object.getOwnPropertyNames 都只会查找对象直接包含的属性
+
+- 遍历
+    - for of 循环首选会向被访问对象请求一个迭代器对象，然后通过调用迭代器对象的next()防范来遍历所有返回值
+    ```
+    var myArray = [1,2,3];
+    for(var v of myArray) {
+      console.log(v);
+    }
+    //1 2 3
+    ```
+    ```
+    如何工作
+    var myArray = [1,2,3];
+    var it = myArray[Symbol.iterator]();
+    it.next();  // {value: 1, done: false}
+    it.next();  // {value: 2, done: false}
+    it.next();  // {value: 3, done: false}
+    it.next();  // {done: true}
+
+    ```
