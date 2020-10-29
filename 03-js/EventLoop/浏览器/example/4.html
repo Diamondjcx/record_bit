@@ -1,0 +1,33 @@
+<html>
+
+<body>
+  <pre id="main"></pre>
+  <div>
+    通过这个例⼦，我们就可以发现，渲染过程很明显分成三个阶段：
+    1. JavaScript 执⾏完毕 innerText ⾸先加上 [end 10001]
+    2. 内部队列：Promise 的 then 全部任务执⾏完毕，往 innerText 上
+    追加了很⻓⼀段字符串
+    3. HTML 渲染：1 和 2 追加到 innerText 上的内容同时渲染
+    4. 外部队列：挨个执⾏ setTimeout 中追加到 innerText 的内容
+    5. HTML 渲染：将 4 中的内容渲染。
+    6. 回到第 4 步⾛外部队列的流程（内部队列已清空）
+  </div>
+</body>
+<script>
+  const main = document.querySelector('#main');
+  const callback = (i, fn) => () => {
+    console.log(i)
+    main.innerText += fn(i);
+  };
+  let i = 1;
+  while (i++ < 500) {
+    setTimeout(callback(i, (i) => '\n' + i + '<'))
+  }
+  while (i++ < 1000) {
+    Promise.resolve().then(callback(i, (i) => i + ','))
+  }
+  console.log(i)
+  main.innerText += '[end ' + i + ' ]\n'
+</script>
+
+</html>

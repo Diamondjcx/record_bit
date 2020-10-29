@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='../vue/dist/vue.js'></script>
+</head>
+<body>
+    <div id="demo">
+        
+       <h4>虚拟dom</h4>
+       <p>{foo}</p>
+    </div>
+    <script>
+       
+        // 创建实例
+        const demo = new Vue({
+            el: '#demo',
+            data: {
+                foo: 'foo'
+            },
+            mounted () {
+                setTimeout(() =>{
+                    this.foo = 'ffoooo'
+                }, 2000)
+            }
+        })
+        console.log(demo);
+    </script>
+</body>
+</html>
