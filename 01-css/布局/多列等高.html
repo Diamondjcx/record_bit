@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1：margin-bottom:padding-bottom 相抵 */
+        /* .Article {
+        overflow: hidden;
+        }
+
+        .Article>li {
+        float: left;
+        margin: 0 10px -9999px 0;
+        padding-bottom: 9999px;
+        background: #4577dc;
+        width: 200px;
+        color: #fff;
+        }
+
+        .Article>li>p {
+        padding: 10px;
+        } */
+        /* 2利用table布局 */
+        /* .Article {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .Article>li {
+            display: table-cell;
+            width: 200px;
+            border-left: solid 5px currentColor;
+            border-right: solid 5px currentColor;
+            color: #fff;
+            background: pink;
+        }
+
+        .Article>li>p {
+            padding: 10px;
+        } */
+        /* 33、flex布局 */
+        /* .Article {
+            display: flex;
+            }
+
+        .Article>li {
+            flex: 1;
+            border-left: solid 5px currentColor;
+            border-right: solid 5px currentColor;
+            color: #fff;
+            background: #4577dc;
+        }
+
+        .Article>li>p {
+            padding: 10px;
+        } */
+        /* 4、grid布局 */
+        .Article {
+            display: grid;
+            grid-auto-flow: column;
+            grid-gap: 20px;
+            }
+
+            .Article>li {
+            border-left: solid 5px currentColor;
+            border-right: solid 5px currentColor;
+            color: #fff;
+            background: #4577dc;
+            }
+
+            .Article>li>p {
+            padding: 10px;
+            }
+
+
+    </style>
+</head>
+<body>
+    <ul class="Article">
+        <li class="js-article-item">
+          <p>
+          一家将客户利益置于首位的经纪商，
+          为客户提供专业的交易工具一家将客户利益置于首位的经纪商，
+          为客户提供专业的交易工具一家将客户利益置于首位的经纪商，
+          为客户提供专业的交易工具一家将客户利益置于首位的经纪商，为客户提供专业的交易工具
+          </p>
+        </li>
+        <li class="js-article-item">
+          <p>一家将客户利益置于首位的经纪商，为客户提供专业的交易工具
+          一家将客户利益置于首位的经纪商，为客户提供专业的交易工具</p>
+        </li>
+        <li class="js-article-item">
+          <p>一家将客户利益置于首位的经纪商</p>
+        </li>
+      </ul>
+      <div>下面的内容</div>
+</body>
+</html>
