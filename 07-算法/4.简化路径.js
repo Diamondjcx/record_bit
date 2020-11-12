@@ -15,3 +15,5 @@ const simplifyPath = function (path) {
 // const r = simplifyPath('/home/') //home
 const r = simplifyPath('../home/')
 console.log(r);
+
+
