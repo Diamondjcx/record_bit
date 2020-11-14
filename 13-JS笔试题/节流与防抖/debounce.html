@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      body {
+        background: #e1e1e1;
+        color: white;
+        margin:0 auto;
+      }
+      .left-part,
+      .right-part {
+        padding:1%;
+        margin:0;
+        width:45%;
+        float:left;
+        min-height:100vh;
+        text-align:center;
+      }
+
+      .left-part {
+        background: #999999;
+        color:black;
+      }
+    </style>
+</head>
+<body>
+<h1>这是一个事件防抖的🌰 呵呵哒</h1>
+<div class="left-part">normal resize events<br></div>
+<div class="right-part">Debounced resize events<br></div>
+</body>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js'></script>
+<script>
+  $(document).ready(function(){
+    var win = $(window);
+    var left_part = $('.left-part');
+    var right_part = $('.right-part');
+
+    function print_info(div) {
+      div.append(win.width() + ' x ' + win.height() +  '<br>');
+    }
+
+    $(window).on('resize', function(){
+      print_info(left_part);
+    });
+
+    $(window).on('resize', _.debounce(function() {
+      print_info(right_part);
+    }, 400));
+  });
+</script>
+</html>
+

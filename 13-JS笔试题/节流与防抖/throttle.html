@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      body {
+        background: #e1e1e1;
+        margin:0 auto;
+        max-width:600px;
+        padding:12px;
+      }
+      .item {
+        height:120px;
+        width:100%;
+        margin-top:50px;
+        padding:20px;
+      }
+      .color-1 { background: #9BFFBB}
+      .color-2 { background: #B9C6FF}
+      .color-3 { background: #FFA3D8}
+      .color-4 { background: #FF8E9B}
+    </style>
+</head>
+<body>
+<h1>这是一个事件节流的🌰 呵呵哒</h1>
+<div class="item color-1">Block 1</div>
+<div class="item color-2">Block 2</div>
+<div class="item color-3">Block 3</div>
+<div class="item color-4">Block 4</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js'></script>
+<script>
+    $(document).ready(function(){
+    // Check every 200ms the scroll position
+    $(document).on('scroll', _.throttle(function(){
+      check_if_load_more();
+    }, 300));
+
+    function check_if_load_more() {
+      BottomPixelsFromWindow = 0 + $(document).height() - $(window).scrollTop() -$(window).height();
+      if (BottomPixelsFromWindow < 200){
+        $('body').append($('.item').clone());
+      }
+    }
+  });
+</script>
+</html>
