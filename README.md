@@ -9,3 +9,5 @@
   - 6、原形链
   - 7、数组扁平化
   - 8、如何判断数组
+
+  https://promisesaplus.com/
