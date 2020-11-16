@@ -2,6 +2,7 @@
 #### 检测数组
 - instanceof 它假定只有一个全局执行环境，如果网页有多个框架，实际上存在两个以上不同的全局执行环境，从而存在两个以上不同版本的Array构造函数，如果从一个框架向两一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有不同的构造函数。
 - 使用Array.isArray()判定是否是数组
+- Object.prototype.toString.call(arr) === "[object Array]"
 #### 转换方法
 - 所有对选哪个都有toLocaleString()\toString()\valueOf()方法
 ```
