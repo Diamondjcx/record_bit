@@ -8,6 +8,11 @@ var arr = [
 ]
 // 扁平化
 let flatArr = arr.flat(4)
+//扁平化2 转化成字符串
+let flatArr1 = arr.toString().split(',').map(item => parseFloat(item))
+
+let flatArr2 = JSON.stringify(arr).replace(/(\[|\])/g, '').split(',').map(item => parseFloat(item))
+
 // 去重
 let disArr = Array.from(new Set(flatArr))
 // 排序

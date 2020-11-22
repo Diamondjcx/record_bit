@@ -2,7 +2,7 @@
 
 
 Function.prototype.myCall = function(context) {
-
+     
     if (typeof this !== 'function') {
         console.log('类型错误')
     }
