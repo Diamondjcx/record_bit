@@ -56,3 +56,5 @@
   setTimeout()：指定一段时间后，执行代码
   setInterval()：以固定的时间间隔，重复运行一段代码.
   requestAnimationFrame()：setInterval()的现代版本;在浏览器下一次重新绘制显示之前执行指定的代码块，从而允许动画在适当的帧率下运行
+
+  promises:
